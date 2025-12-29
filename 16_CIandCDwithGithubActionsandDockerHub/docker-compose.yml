@@ -8,7 +8,7 @@ services:
       - erudio-network
 
   naming-server:
-    image: leandrocgsi/naming-server:0.0.1-SNAPSHOT
+    image: jpnfig/naming-server:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
     restart: always
@@ -18,7 +18,7 @@ services:
       - erudio-network
   
   api-gateway:
-    image: leandrocgsi/api-gateway:0.0.1-SNAPSHOT
+    image: jpnfig/api-gateway:0.0.1-SNAPSHOT
     ports:
       - 8765:8765
     restart: always
@@ -36,9 +36,9 @@ services:
     restart: always
     environment:
       TZ: America/Sao_Paulo
-      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_ROOT_PASSWORD: 123456
       MYSQL_USER: docker
-      MYSQL_PASSWORD: admin123
+      MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: book_service
     ports:
       - 3310:3306 # 3310 on host → 3306 on container
@@ -50,9 +50,9 @@ services:
     restart: always
     environment:
       TZ: America/Sao_Paulo
-      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_ROOT_PASSWORD: 123456
       MYSQL_USER: docker
-      MYSQL_PASSWORD: admin123
+      MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: exchange_service
     ports:
       - 3308:3306 # 3310 on host → 3306 on container
@@ -60,7 +60,7 @@ services:
       - erudio-network
 
   exchange-service:
-    image: leandrocgsi/exchange-service
+    image: jpnfig/exchange-service
     restart: always
     build:
       context: ./exchange-service
@@ -71,7 +71,7 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://naming-server:8761/eureka
       SPRING_DATASOURCE_URL: jdbc:mysql://exchange-db:3306/exchange_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
       SPRING_DATASOURCE_USERNAME: docker
-      SPRING_DATASOURCE_PASSWORD: admin123
+      SPRING_DATASOURCE_PASSWORD: 123456
     ports:
       - 8000:8000
     depends_on:
@@ -82,7 +82,7 @@ services:
       - erudio-network
 
   book-service:
-    image: leandrocgsi/book-service
+    image: jpnfig/book-service
     restart: always
     build:
       context: ./book-service
@@ -93,7 +93,7 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://naming-server:8761/eureka
       SPRING_DATASOURCE_URL: jdbc:mysql://book-db:3306/book_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
       SPRING_DATASOURCE_USERNAME: docker
-      SPRING_DATASOURCE_PASSWORD: admin123
+      SPRING_DATASOURCE_PASSWORD: 123456
     ports:
       - 8100:8100
     depends_on:

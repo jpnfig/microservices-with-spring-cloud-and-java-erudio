@@ -45,12 +45,12 @@ jobs:
 
     - name: Tag Docker Images
       run: |
-        docker tag jpnfig/naming-server:0.0.1-SNAPSHOT jpnfig/naming-server:latest
-        docker tag jpnfig/naming-server:0.0.1-SNAPSHOT jpnfig/naming-server:${{github.RUN_ID}}
-        docker tag jpnfig/api-gateway:0.0.1-SNAPSHOT jpnfig/api-gateway:latest
-        docker tag jpnfig/api-gateway:0.0.1-SNAPSHOT jpnfig/api-gateway:${{github.RUN_ID}}
-        docker tag jpnfig/book-service:latest jpnfig/book-service:${{github.RUN_ID}}
-        docker tag jpnfig/exchange-service:latest jpnfig/exchange-service:${{github.RUN_ID}}
+        docker tag ${{secrets.DOCKER_USERNAME}}/naming-server:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/naming-server:latest
+        docker tag ${{secrets.DOCKER_USERNAME}}/naming-server:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/naming-server:${{github.RUN_ID}}
+        docker tag ${{secrets.DOCKER_USERNAME}}/api-gateway:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/api-gateway:latest
+        docker tag ${{secrets.DOCKER_USERNAME}}/api-gateway:0.0.1-SNAPSHOT ${{secrets.DOCKER_USERNAME}}/api-gateway:${{github.RUN_ID}}
+        docker tag ${{secrets.DOCKER_USERNAME}}/book-service:latest ${{secrets.DOCKER_USERNAME}}/book-service:${{github.RUN_ID}}
+        docker tag ${{secrets.DOCKER_USERNAME}}/exchange-service:latest ${{secrets.DOCKER_USERNAME}}/exchange-service:${{github.RUN_ID}}
       
 
     - name: Push Docker Images to Docker Hub
