@@ -1,4 +1,4 @@
-name: Microservices Continuous Deployment with Github Actions
+name: Microservices Continuous Deployment with Github Actions.
 
 on:
   push:
